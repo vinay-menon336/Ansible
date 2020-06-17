@@ -1,0 +1,13 @@
+- name: installation
+  hosts: 192.168.204.129
+  vars:
+    - pkg: httpd
+  tasks:
+    - name: softwares install {{pkg}}
+      yum:
+        name: "{{pkg}}"
+        state: present
+    - name: service start httpd
+      systemd:
+        name: httpd
+        state: started
